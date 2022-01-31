@@ -1,10 +1,17 @@
 import React from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import "./menu-item.styles.scss";
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, linkUrl }) => {
+  let location = useLocation();
+  let navigate = useNavigate();
+
   return (
-    <div className={`${size} menu-item`}>
+    <div
+      className={`${size} menu-item`}
+      onClick={() => navigate(`${location.pathname}${linkUrl}`)}
+    >
       <div
         className="background-image"
         style={{
