@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-// Style Imports
-import "./shop.styles.scss";
 
 // Data Imports
 import SHOP_DATA from "./shop.data";

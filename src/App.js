@@ -6,12 +6,16 @@ import "./App.css";
 import HomePage from "./pages/home/home.page";
 import ShopPage from "./pages/shop/shop.page";
 
+import Header from "./components/header/header.component";
+
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="shop" element={<ShopPage />} />
+        <Route element={<Header />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="shop" element={<ShopPage />} />
+        </Route>
       </Routes>
     </div>
   );
