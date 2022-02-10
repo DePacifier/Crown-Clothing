@@ -1,6 +1,8 @@
+// React Library imports
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+// Redux Imports
 import { connect } from "react-redux";
 import { setCurrentUser } from "./redux/user/user.actions";
 
@@ -33,9 +35,10 @@ class App extends React.Component {
             ...snapshot.data(),
           });
         });
+        setCurrentUser({ userAuth });
       }
 
-      setCurrentUser({ userAuth });
+      setCurrentUser(null);
     });
   }
 
@@ -58,8 +61,12 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps = ({ user }) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: (user) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
