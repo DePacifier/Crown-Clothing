@@ -1,6 +1,6 @@
 // React Library imports
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 // Redux Imports
 import { connect } from "react-redux";
@@ -53,7 +53,12 @@ class App extends React.Component {
           <Route element={<Header />}>
             <Route path="/" element={<HomePage />} />
             <Route path="shop" element={<ShopPage />} />
-            <Route path="signin" element={<LoginPage />} />
+            <Route
+              path="signin"
+              element={
+                this.props.currentUser ? <Navigate to={"/"} /> : <LoginPage />
+              }
+            />
           </Route>
         </Routes>
       </div>
